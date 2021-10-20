@@ -1,7 +1,6 @@
 import 'package:adviser/domain/entities/advice_entity.dart';
 import 'package:adviser/domain/failures/failures.dart';
 import 'package:adviser/domain/repositories/advicer_repository.dart';
-import 'package:adviser/infrastructure/repositories/advicer_repository_impl.dart';
 import 'package:dartz/dartz.dart';
 
 class AdvicerUsecases {
@@ -9,7 +8,9 @@ class AdvicerUsecases {
   //   return Future.delayed(const Duration(seconds: 2), () => {"1"});
   // }
 
-  final AdvicerRepository advicerRepository = AdvicerRepositoryImpl();
+  final AdvicerRepository advicerRepository;
+
+  AdvicerUsecases({required this.advicerRepository});
 
   Future<Either<Failure, AdviceEntity>> getAdviceUsecase() async {
     // Business logic implementation

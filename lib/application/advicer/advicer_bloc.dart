@@ -9,9 +9,9 @@ part 'advicer_event.dart';
 part 'advicer_state.dart';
 
 class AdvicerBloc extends Bloc<AdvicerEvent, AdvicerState> {
-  AdvicerBloc() : super(AdvicerInitial()) {
-    final usescases = AdvicerUsecases();
+  final AdvicerUsecases usescases;
 
+  AdvicerBloc({required this.usescases}) : super(AdvicerInitial()) {
     // ignore: void_checks
     on<AdviceRequestedEvent>((event, emit) async {
       emit(AdvicerStateLoading());
@@ -24,9 +24,6 @@ class AdvicerBloc extends Bloc<AdvicerEvent, AdvicerState> {
           (failure) =>
               emit(AdvicerStateError(message: _mapFailureToMessage(failure))),
           (advice) => emit(AdvicerStateLoaded(advice: advice.advice)));
-
-      // send AdvicerStateLoaded event with advice as parameter
-      //emit(AdvicerStateLoaded(advice: advice.advice));
     });
   }
 
