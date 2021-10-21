@@ -9,6 +9,10 @@ import 'package:mockito/mockito.dart';
 
 import 'advicer_usecases_test.mocks.dart';
 
+// For generating 'advicer_usecases_test.mocks.dart' file based on attribute
+// @GenerateMocks([AdvicerRepository])
+//
+// run this command in terminal =>
 // flutter packages run build_runner build --delete-conflicting-outputs
 @GenerateMocks([AdvicerRepository])
 void main() {
@@ -21,17 +25,17 @@ void main() {
   });
 
   group("getAdviceUsescase", () {
-    final t_Advice = AdviceEntity(advice: "Test", id: 1);
+    final tAdvice = AdviceEntity(advice: "Test", id: 1);
 
     test("should return the same advice as repository", () async {
 // arrange
       when(mockAdvicerRepository.getAdviceFromApi())
-          .thenAnswer((_) async => Right(t_Advice));
+          .thenAnswer((_) async => Right(tAdvice));
 // act
       final result = await advicerUsecases.getAdviceUsecase();
 
 // assert
-      expect(result, Right(t_Advice));
+      expect(result, Right(tAdvice));
       verify(mockAdvicerRepository.getAdviceFromApi());
       verifyNoMoreInteractions(mockAdvicerRepository);
     });
