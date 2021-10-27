@@ -1,4 +1,5 @@
 import 'package:adviser/application/advicer/advicer_bloc.dart';
+import 'package:adviser/application/theme/theme_service.dart';
 import 'package:adviser/domain/repositories/advicer_repository.dart';
 import 'package:adviser/domain/repositories/theme_repository.dart';
 import 'package:adviser/domain/usescases/advicer_usecases.dart';
@@ -13,9 +14,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 final serviceLocator = GetIt.instance; // ServiceLocator
 
 Future<void> init() async {
-  //! Blocs register
+  //! application layer
   serviceLocator
       .registerFactory(() => AdvicerBloc(usescases: serviceLocator()));
+
+  serviceLocator.registerLazySingleton<ThemeService>(
+      () => ThemeServiceImpl(themeRepository: serviceLocator()));
 
   /// UseCases
   serviceLocator.registerLazySingleton(
