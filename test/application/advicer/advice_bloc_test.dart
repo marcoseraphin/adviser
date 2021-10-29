@@ -26,7 +26,7 @@ void main() {
 
   group("AdviceRequestedEvent", () {
     final tAdvice = AdviceEntity(advice: "test", id: 1);
-    final tAdviceString = "test";
+    const tAdviceString = "test";
 
     test("should call use case if event is added", () async {
 // arrange

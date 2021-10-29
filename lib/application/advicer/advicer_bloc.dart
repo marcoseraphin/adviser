@@ -9,9 +9,7 @@ import 'package:meta/meta.dart';
 part 'advicer_event.dart';
 part 'advicer_state.dart';
 
-// ignore: constant_identifier_names
 const GENERAL_FAILURE_MESSAGE = "Ups, something gone wrong. Please try again!";
-// ignore: constant_identifier_names
 const SERVER_FAILURE_MESSAGE = "Ups API Error, please try again";
 
 class AdvicerBloc extends Bloc<AdvicerEvent, AdvicerState> {
