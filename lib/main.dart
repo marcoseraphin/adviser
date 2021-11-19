@@ -26,9 +26,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Consumer<ThemeService>(
-      builder: (context, themeService, child) {
-        return MaterialApp(
+    return Consumer<ThemeService>(builder: (context, themeService, child) {
+      return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Advicer App',
           theme: AppTheme.lightTheme,
@@ -38,9 +37,7 @@ class MyApp extends StatelessWidget {
           home: BlocProvider(
               create: (BuildContext context) =>
                   depedencyinjection.serviceLocator<AdvicerBloc>(),
-              child: const AdvicerPage()),
-        );
-      },
-    );
+              child: const AdvicerPage()));
+    });
   }
 }
