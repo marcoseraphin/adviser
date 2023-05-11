@@ -16,7 +16,7 @@ class AdvicerPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Advicer", style: themeData.textTheme.headline1),
+        title: Text("Advicer", style: themeData.textTheme.headlineLarge),
         actions: [
           Switch(
               value: Provider.of<ThemeService>(context).isDarkModeOn,
@@ -39,7 +39,7 @@ class AdvicerPage extends StatelessWidget {
                             if (adviceState is AdvicerInitial) {
                               return Text(
                                 "Your advice is waiting for you.",
-                                style: themeData.textTheme.headline1,
+                                style: themeData.textTheme.headlineLarge,
                                 textAlign: TextAlign.center,
                               );
                             } else if (adviceState is AdvicerStateLoading) {
